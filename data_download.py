@@ -12,7 +12,7 @@ from binance import Client
 class DataDownloader:
     def __init__(self) -> None:
         # Setup --------------
-        self.dir = '_data'
+        self.dir = 'data/raw'
         # Content ------------
         self.intervals = ['5m']
         self.assets = ['BTC', 'ETH', 'DOGE']
@@ -126,9 +126,9 @@ class DataDownloader:
 
 # Main Function
 def main():
-    directory = '_data'
+    directory = 'data/raw'
     if directory not in os.listdir():
-        os.mkdir(directory)
+        os.makedirs(directory)
 
     dd = DataDownloader()
 
