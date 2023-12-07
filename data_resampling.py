@@ -12,11 +12,11 @@ class DataResampler:
                  raw_data_dir: Optional[str] = None,
                  processed_dir: Optional[str] = None) -> None:
 
-        self.resample_intervals: list[int] = [5, 10, 15]
+        self.resample_intervals: list[int] = [10]
         self.resample_methods: list[str] = ['last', 'first', 'mean']
 
         self.data_root = "./data/" if data_root is None else data_root
-        self.raw_data_dir = self.data_root+"raw/5m/" \
+        self.raw_data_dir = self.data_root+"raw/" \
             if raw_data_dir is None else raw_data_dir
         self.processed_dir = self.data_root+"resampled/" \
             if processed_dir is None else processed_dir
@@ -79,7 +79,7 @@ class DataResampler:
         """
         raw_directory = self.raw_data_dir
 
-        self._create_necessary_directories()
+        # self._create_necessary_directories()
 
         asset_list = []
         for asset_filename in os.listdir(raw_directory):
@@ -99,8 +99,8 @@ class DataResampler:
 
 def main():
     data_root = "./data/"
-    raw_data_dir = data_root+"raw/5m/"
-    processed_dir = data_root+"resampled/"
+    raw_data_dir = data_root+"validation/5m/"
+    processed_dir = data_root+"validation/"
 
     dr = DataResampler(data_root=data_root,
                        raw_data_dir=raw_data_dir,

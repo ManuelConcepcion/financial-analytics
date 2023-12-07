@@ -12,14 +12,14 @@ from binance import Client
 class DataDownloader:
     def __init__(self) -> None:
         # Setup --------------
-        self.dir = 'data/raw'
+        self.dir = 'data/validation'
         # Content ------------
-        self.intervals = ['5m']
+        self.intervals = ['5m', '15m']
         self.assets = ['BTC', 'ETH', 'DOGE']
         # interval ----------
-        self.start_date = datetime.date(2023, 9, 1)
+        self.start_date = datetime.date(2023, 11, 16)
         self.end_one_day = self.start_date + datetime.timedelta(1)
-        self.end_date = datetime.date(2023, 11, 15)
+        self.end_date = datetime.date(2023, 11, 30)
 
     @staticmethod
     def get_data(client,
@@ -126,9 +126,9 @@ class DataDownloader:
 
 # Main Function
 def main():
-    directory = 'data/raw'
-    if directory not in os.listdir():
-        os.makedirs(directory)
+    directory = 'data/validation'
+    # if directory not in os.listdir():
+    #     os.makedirs(directory)
 
     dd = DataDownloader()
 

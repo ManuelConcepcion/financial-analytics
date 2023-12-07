@@ -17,6 +17,7 @@ def RSI(prices, n=9):
     deltas = np.diff(prices)
     seed = deltas[:n+1]
     down = -seed[seed < 0].sum()/n
+    down = 1 if down == 0 else down
     up = seed[seed >= 0].sum()/n
     rs = up/down
     rsi = np.zeros(len(prices))
